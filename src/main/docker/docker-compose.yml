@@ -1,0 +1,17 @@
+version: '2'
+services:
+  api:
+    image: weightcontrol-api:0.0.1-SNAPSHOT
+    restart: always
+    links:
+        - mariadb
+  mariadb:
+    image: mariadb:10.1.22
+    restart: always
+    ports:
+     - "4406:3306"
+    volumes:
+        - /opt/servers/weightcontrol/mariadb:/var/lib/mysql
+    environment:
+        - MYSQL_ROOT_PASSWORD
+        - MYSQL_DATABASE=weight_control
