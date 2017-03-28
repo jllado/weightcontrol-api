@@ -13,13 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class WeightControlApi {
 
     @Autowired
-    private WeightRepository repository;
-
-    @Autowired
     private WeightControl weightControl;
 
     @RequestMapping(value = "/weight", method = RequestMethod.POST)
-    public void newwWeight(@RequestBody final WeightDTO weightDTO) {
+    public void newWeight(@RequestBody final WeightDTO weightDTO) {
         weightControl.save(weightDTO);
     }
 
