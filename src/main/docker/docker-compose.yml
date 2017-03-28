@@ -3,6 +3,8 @@ services:
   api:
     image: weightcontrol-api:0.0.1-SNAPSHOT
     restart: always
+    ports:
+     - "5050:8080"
     links:
         - mariadb
   mariadb:
