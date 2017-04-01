@@ -15,15 +15,6 @@ public class WeightDTO {
     @JsonProperty(value = "muscle_weight")
     public float muscleWeight;
 
-    public WeightDTO() {
-    }
-
-    public WeightDTO(final float weight, final float fatPercentatge, final float muscleWeight) {
-        this.weight = weight;
-        this.fatPercentatge = fatPercentatge;
-        this.muscleWeight = muscleWeight;
-    }
-
     public float getWeight() {
         return weight;
     }
@@ -47,34 +38,4 @@ public class WeightDTO {
     public void setMuscleWeight(final float muscleWeight) {
         this.muscleWeight = muscleWeight;
     }
-
-    @Override
-    public String toString() {
-        return "WeightDTO{" +
-                "weight=" + weight +
-                ", fatPercentatge=" + fatPercentatge +
-                ", muscleWeight=" + muscleWeight +
-                '}';
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        final WeightDTO weightDTO = (WeightDTO) o;
-
-        if (Float.compare(weightDTO.weight, weight) != 0) return false;
-        if (Float.compare(weightDTO.fatPercentatge, fatPercentatge) != 0) return false;
-        return Float.compare(weightDTO.muscleWeight, muscleWeight) == 0;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = (weight != +0.0f ? Float.floatToIntBits(weight) : 0);
-        result = 31 * result + (fatPercentatge != +0.0f ? Float.floatToIntBits(fatPercentatge) : 0);
-        result = 31 * result + (muscleWeight != +0.0f ? Float.floatToIntBits(muscleWeight) : 0);
-        return result;
-    }
-
 }
