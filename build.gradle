@@ -35,6 +35,13 @@ dependencies {
 	testCompile('org.hsqldb:hsqldb:2.3.4')
 }
 
+sonarqube {
+    properties {
+        property "sonar.host.url", "http://myjenkins_sonar_1:9000/"
+
+    }
+}
+
 jacoco {
     toolVersion = "0.7.6.201602180812"
     reportsDir = file("$buildDir/customJacocoReportDir")
