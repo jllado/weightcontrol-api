@@ -8,7 +8,7 @@ pipeline {
         }
         stage ('Build') {
             steps {
-                sh './gradlew build buildDocker'
+                sh './gradlew build sonarqube buildDocker'
             }
         }
         stage ('Deploy') {
