@@ -15,9 +15,9 @@ public class WeightControlApi {
     @Autowired
     private WeightControl weightControl;
 
-    @RequestMapping(value = "/weight", method = RequestMethod.POST)
-    public void newWeight(@RequestBody final WeightDTO weightDTO) {
-        weightControl.save(weightDTO);
+    @RequestMapping(value = "/measurement", method = RequestMethod.POST)
+    public void newMeasurement(@RequestBody final MeasurementDTO measurementDTO) {
+        weightControl.save(measurementDTO);
     }
 
 }

@@ -13,7 +13,7 @@ import java.time.LocalDate;
  */
 @Entity
 @Table(name = "medicion_peso")
-public class Weight {
+public class Measurement {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
@@ -30,18 +30,19 @@ public class Weight {
     @Column(name = "fecha_medicion")
     public LocalDate date;
 
-    public Weight(final float weight, final float fatPercentatge, final float muscleWeight) {
+    public Measurement(final float weight, final float fatPercentatge, final float muscleWeight) {
         this.weight = weight;
         this.fatPercentatge = fatPercentatge;
         this.muscleWeight = muscleWeight;
         this.date = LocalDate.now();
     }
 
-    public static Weight createBy(final WeightDTO weightDTO) {
-        return new Weight(weightDTO.getWeight(), weightDTO.getFatPercentatge(), weightDTO.getMuscleWeight());
+    public Measurement() {
+        //JPA
     }
 
-    public Weight() {
+    public static Measurement createBy(final MeasurementDTO measurementDTO) {
+        return new Measurement(measurementDTO.getWeight(), measurementDTO.getFatPercentatge(), measurementDTO.getMuscleWeight());
     }
 
     public Long getId() {

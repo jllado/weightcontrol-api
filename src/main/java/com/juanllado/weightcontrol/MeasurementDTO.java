@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * Created by jllado on 27/03/17.
  */
-public class WeightDTO {
+public class MeasurementDTO {
 
-    public float weight;
+    private float weight;
 
     @JsonProperty(value = "fat_percentage")
     public float fatPercentatge;

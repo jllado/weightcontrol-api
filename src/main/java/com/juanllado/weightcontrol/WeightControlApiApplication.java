@@ -11,6 +11,10 @@ import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 @SpringBootApplication
 public class WeightControlApiApplication {
 
+	public WeightControlApiApplication() { //NOSONAR
+		//spring boot app
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(WeightControlApiApplication.class, args);
 	}

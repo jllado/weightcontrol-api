@@ -26,20 +26,20 @@ public class WeightControlApiIT {
 	private MockMvc mockMvc;
 
 	@Autowired
-    private WeightRepository repository;
+    private MeasurementRepository repository;
 
     @Test
 	public void should_save_a_new_weight() throws Exception {
-		this.mockMvc.perform(post("/weight")
+		this.mockMvc.perform(post("/measurement")
 				.content("{\"weight\":70, \"fat_percentage\": 20, \"muscle_weight\": 55}")
 				.contentType(MediaType.APPLICATION_JSON)).andDo(print())
 				.andExpect(status().isOk());
 
-        final Weight newWeight = repository.findAll().get(0);
-        assertThat(newWeight.getWeight(), is(70f));
-        assertThat(newWeight.getFatPercentatge(), is(20f));
-        assertThat(newWeight.getMuscleWeight(), is(55f));
-        assertThat(newWeight.getDate(), is(LocalDate.now()));
+        final Measurement newMeasurement = repository.findAll().get(0);
+        assertThat(newMeasurement.getWeight(), is(70f));
+        assertThat(newMeasurement.getFatPercentatge(), is(20f));
+        assertThat(newMeasurement.getMuscleWeight(), is(55f));
+        assertThat(newMeasurement.getDate(), is(LocalDate.now()));
     }
 
 }

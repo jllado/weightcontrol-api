@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 public class WeightControl {
 
     @Autowired
-    private WeightRepository repository;
+    private MeasurementRepository repository;
 
-    public void save(final WeightDTO weightDTO) {
-        repository.save(Weight.createBy(weightDTO));
+    public void save(final MeasurementDTO measurementDTO) {
+        repository.save(Measurement.createBy(measurementDTO));
     }
 }
