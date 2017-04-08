@@ -22,7 +22,7 @@ public class Measurement {
     private float weight;
 
     @Column(name = "porcentaje_grasa")
-    private float fatPercentatge;
+    private float fatPercentage;
 
     @Column(name = "peso_musculo")
     private float muscleWeight;
@@ -31,30 +31,30 @@ public class Measurement {
     private LocalDate date;
 
     @Column(name = "porcentaje_musculo")
-    private float musclePercentatge;
+    private float musclePercentage;
 
     @Column(name = "comentario_medicion")
     private String comment;
 
-    public Measurement(final float weight, final float fatPercentatge, final float muscleWeight, final String comment) {
+    public Measurement(final float weight, final float fatPercentage, final float muscleWeight, final String comment) {
         this.weight = weight;
-        this.fatPercentatge = fatPercentatge;
+        this.fatPercentage = fatPercentage;
         this.muscleWeight = muscleWeight;
-        this.musclePercentatge = calculateMusclePercentatge(weight, muscleWeight);
+        this.musclePercentage = calculateMusclePercentatge(weight, muscleWeight);
         this.comment = comment;
         this.date = LocalDate.now();
-    }
-
-    private float calculateMusclePercentatge(final float weight, final float muscleWeight) {
-        return muscleWeight * 100f / weight;
     }
 
     public Measurement() {
         //JPA
     }
 
+    private float calculateMusclePercentatge(final float weight, final float muscleWeight) {
+        return muscleWeight * 100f / weight;
+    }
+
     public static Measurement createBy(final MeasurementDTO measurementDTO) {
-        return new Measurement(measurementDTO.getWeight(), measurementDTO.getFatPercentatge(), measurementDTO.getMuscleWeight(), measurementDTO.getComment());
+        return new Measurement(measurementDTO.getWeight(), measurementDTO.getFatPercentage(), measurementDTO.getMuscleWeight(), measurementDTO.getComment());
     }
 
     public Long getId() {
@@ -65,8 +65,8 @@ public class Measurement {
         return weight;
     }
 
-    public float getFatPercentatge() {
-        return fatPercentatge;
+    public float getFatPercentage() {
+        return fatPercentage;
     }
 
     public float getMuscleWeight() {
@@ -77,19 +77,21 @@ public class Measurement {
         return date;
     }
 
-    public float getMusclePercentatge() {
-        return musclePercentatge;
-    }
-
-    public void setMusclePercentatge(final float musclePercentatge) {
-        this.musclePercentatge = musclePercentatge;
+    public float getMusclePercentage() {
+        return musclePercentage;
     }
 
     public String getComment() {
         return comment;
     }
 
-    public void setComment(final String comment) {
-        this.comment = comment;
+    public MeasurementDTO toDTO() {
+        final MeasurementDTO measurementDTO = new MeasurementDTO();
+        measurementDTO.setWeight(weight);
+        measurementDTO.setFatPercentage(fatPercentage);
+        measurementDTO.setMuscleWeight(muscleWeight);
+        measurementDTO.setMusclePercentage(musclePercentage);
+        measurementDTO.setComment(comment);
+        return measurementDTO;
     }
 }

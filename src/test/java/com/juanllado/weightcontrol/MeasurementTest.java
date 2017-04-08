@@ -17,6 +17,6 @@ public class MeasurementTest {
     public void create_should_calculate_muscle_percentatge() throws Exception {
         final Measurement measurement = new Measurement(100f, anyNumber, 75f, anyComment);
 
-        assertThat(measurement.getMusclePercentatge(), is(75f));
+        assertThat(measurement.getMusclePercentage(), is(75f));
     }
 }
