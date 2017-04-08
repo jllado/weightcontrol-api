@@ -33,11 +33,15 @@ public class Measurement {
     @Column(name = "porcentaje_musculo")
     private float musclePercentatge;
 
-    public Measurement(final float weight, final float fatPercentatge, final float muscleWeight) {
+    @Column(name = "comentario_medicion")
+    private String comment;
+
+    public Measurement(final float weight, final float fatPercentatge, final float muscleWeight, final String comment) {
         this.weight = weight;
         this.fatPercentatge = fatPercentatge;
         this.muscleWeight = muscleWeight;
         this.musclePercentatge = calculateMusclePercentatge(weight, muscleWeight);
+        this.comment = comment;
         this.date = LocalDate.now();
     }
 
@@ -50,7 +54,7 @@ public class Measurement {
     }
 
     public static Measurement createBy(final MeasurementDTO measurementDTO) {
-        return new Measurement(measurementDTO.getWeight(), measurementDTO.getFatPercentatge(), measurementDTO.getMuscleWeight());
+        return new Measurement(measurementDTO.getWeight(), measurementDTO.getFatPercentatge(), measurementDTO.getMuscleWeight(), measurementDTO.getComment());
     }
 
     public Long getId() {
@@ -79,5 +83,13 @@ public class Measurement {
 
     public void setMusclePercentatge(final float musclePercentatge) {
         this.musclePercentatge = musclePercentatge;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(final String comment) {
+        this.comment = comment;
     }
 }

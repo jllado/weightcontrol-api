@@ -10,11 +10,12 @@ import static org.hamcrest.Matchers.is;
  */
 public class MeasurementTest {
 
-    private float any = 0f;
+    private float anyNumber = 0f;
+    private String anyComment = "";
 
     @Test
     public void create_should_calculate_muscle_percentatge() throws Exception {
-        final Measurement measurement = new Measurement(100f, any, 75f);
+        final Measurement measurement = new Measurement(100f, anyNumber, 75f, anyComment);
 
         assertThat(measurement.getMusclePercentatge(), is(75f));
     }

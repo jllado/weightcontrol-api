@@ -31,7 +31,7 @@ public class WeightControlApiIT {
     @Test
 	public void should_save_a_new_weight() throws Exception {
 		this.mockMvc.perform(post("/measurement")
-				.content("{\"weight\":70, \"fat_percentage\": 20, \"muscle_weight\": 55}")
+				.content("{\"weight\":70, \"fat_percentage\": 20, \"muscle_weight\": 55, \"comment\": \"regular week\"}")
 				.contentType(MediaType.APPLICATION_JSON)).andDo(print())
 				.andExpect(status().isOk());
 
@@ -40,6 +40,7 @@ public class WeightControlApiIT {
         assertThat(newMeasurement.getFatPercentatge(), is(20f));
         assertThat(newMeasurement.getMuscleWeight(), is(55f));
         assertThat(newMeasurement.getMusclePercentatge(), is(78.57143f));
+        assertThat(newMeasurement.getComment(), is("regular week"));
         assertThat(newMeasurement.getDate(), is(LocalDate.now()));
     }
 

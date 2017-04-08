@@ -15,6 +15,9 @@ public class MeasurementDTO {
     @JsonProperty(value = "muscle_weight")
     public float muscleWeight;
 
+    @JsonProperty(value = "comment")
+    public String comment;
+
     public float getWeight() {
         return weight;
     }
@@ -38,4 +41,13 @@ public class MeasurementDTO {
     public void setMuscleWeight(final float muscleWeight) {
         this.muscleWeight = muscleWeight;
     }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(final String comment) {
+        this.comment = comment;
+    }
+
 }
