@@ -19,22 +19,30 @@ public class Measurement {
     private Long id;
 
     @Column(name = "peso")
-    public float weight;
+    private float weight;
 
     @Column(name = "porcentaje_grasa")
-    public float fatPercentatge;
+    private float fatPercentatge;
 
     @Column(name = "peso_musculo")
-    public float muscleWeight;
+    private float muscleWeight;
 
     @Column(name = "fecha_medicion")
-    public LocalDate date;
+    private LocalDate date;
+
+    @Column(name = "porcentaje_musculo")
+    private float musclePercentatge;
 
     public Measurement(final float weight, final float fatPercentatge, final float muscleWeight) {
         this.weight = weight;
         this.fatPercentatge = fatPercentatge;
         this.muscleWeight = muscleWeight;
+        this.musclePercentatge = calculateMusclePercentatge(weight, muscleWeight);
         this.date = LocalDate.now();
+    }
+
+    private float calculateMusclePercentatge(final float weight, final float muscleWeight) {
+        return muscleWeight * 100f / weight;
     }
 
     public Measurement() {
@@ -63,5 +71,13 @@ public class Measurement {
 
     public LocalDate getDate() {
         return date;
+    }
+
+    public float getMusclePercentatge() {
+        return musclePercentatge;
+    }
+
+    public void setMusclePercentatge(final float musclePercentatge) {
+        this.musclePercentatge = musclePercentatge;
     }
 }

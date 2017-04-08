@@ -39,6 +39,7 @@ public class WeightControlApiIT {
         assertThat(newMeasurement.getWeight(), is(70f));
         assertThat(newMeasurement.getFatPercentatge(), is(20f));
         assertThat(newMeasurement.getMuscleWeight(), is(55f));
+        assertThat(newMeasurement.getMusclePercentatge(), is(78.57143f));
         assertThat(newMeasurement.getDate(), is(LocalDate.now()));
     }
 
