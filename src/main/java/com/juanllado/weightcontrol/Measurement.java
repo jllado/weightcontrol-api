@@ -49,6 +49,11 @@ public class Measurement {
         //JPA
     }
 
+    public Measurement(final float weight, final float fatPercentage, final float muscleWeight, final String comment, final LocalDate date) {
+        this(weight, fatPercentage, muscleWeight, comment);
+        this.date = date;
+    }
+
     private float calculateMusclePercentatge(final float weight, final float muscleWeight) {
         return muscleWeight * 100f / weight;
     }

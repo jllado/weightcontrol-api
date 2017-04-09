@@ -20,7 +20,7 @@ public class WeightControl {
     }
 
     public List<MeasurementDTO> getAll() {
-        final List<Measurement> measurements = repository.findAll();
+        final List<Measurement> measurements = repository.findAllByOrderByDateDesc();
         return measurements.stream().map(Measurement::toDTO).collect(Collectors.toList());
     }
 }

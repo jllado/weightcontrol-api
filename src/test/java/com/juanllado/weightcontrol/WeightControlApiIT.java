@@ -53,15 +53,17 @@ public class WeightControlApiIT {
     }
 
     @Test
-	public void should_retrieve_all_measurement() throws Exception {
-        final Measurement mesaurement = new Measurement(100f, 25f, 50f, "test week");
-        repository.save(mesaurement);
+	public void should_retrieve_all_measurement_ordered_by_date_desc() throws Exception {
+        final Measurement lastMeasurement = new Measurement(100f, 25f, 50f, "last week", LocalDate.of(2017, 03, 01));
+        final Measurement firstMeasurement = new Measurement(200f, 50f, 100f, "first week", LocalDate.of(2016, 03, 01));
+        repository.save(firstMeasurement);
+        repository.save(lastMeasurement);
 
 		this.mockMvc.perform(get("/measurement")).andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string("" +
-                        "[{\"weight\":100.0,\"fat_percentage\":25.0,\"muscle_weight\":50.0," +
-                        "\"muscle_percentage\":50.0,\"comment\":\"test week\"}]"));
+                        "[{\"weight\":100.0,\"fat_percentage\":25.0,\"muscle_weight\":50.0,\"muscle_percentage\":50.0,\"comment\":\"last week\"}," +
+                        "{\"weight\":200.0,\"fat_percentage\":50.0,\"muscle_weight\":100.0,\"muscle_percentage\":50.0,\"comment\":\"first week\"}]"));
     }
 
 }
