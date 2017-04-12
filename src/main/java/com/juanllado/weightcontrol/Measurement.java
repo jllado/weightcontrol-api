@@ -28,7 +28,7 @@ public class Measurement {
     private float muscleWeight;
 
     @Column(name = "fecha_medicion")
-    private LocalDate date;
+    private LocalDate date = LocalDate.now();
 
     @Column(name = "porcentaje_musculo")
     private float musclePercentage;
@@ -42,16 +42,15 @@ public class Measurement {
         this.muscleWeight = muscleWeight;
         this.musclePercentage = calculateMusclePercentatge(weight, muscleWeight);
         this.comment = comment;
-        this.date = LocalDate.now();
-    }
-
-    public Measurement() {
-        //JPA
     }
 
     public Measurement(final float weight, final float fatPercentage, final float muscleWeight, final String comment, final LocalDate date) {
         this(weight, fatPercentage, muscleWeight, comment);
         this.date = date;
+    }
+
+    public Measurement() {
+        //JPA
     }
 
     private float calculateMusclePercentatge(final float weight, final float muscleWeight) {
